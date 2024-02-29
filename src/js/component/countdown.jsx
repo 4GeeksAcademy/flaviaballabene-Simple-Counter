@@ -2,18 +2,20 @@ import React from "react";
 import { useState, useEffect } from "react";
 
 //create your first component
-export default function Home () {
-
-	const [time, setTime] = useState(0);
+export default function CountDown() {
+  const [time, setTime] = useState(100000);
 
   useEffect(() => {
-    const intervalId = setInterval(() => setTime(prevTime => prevTime + 1), 1000);
+    const intervalId = setInterval(
+      () => setTime((prevTime) => prevTime - 1),
+      1000
+    );
     return () => clearInterval(intervalId);
   }, []);
 
   return (
     <div className="home">
-		<h1 className="h1">Counter</h1>
+      <h1 className="h1">Countdown</h1>
       <div className="card text-bg-dark mb-3">
         <div className="card-body">
           <svg
@@ -29,23 +31,23 @@ export default function Home () {
         </div>
       </div>
       <div className="card text-bg-dark mb-3">
-        <div className="card-body">{Math.floor(time / 100000 % 10)}</div>
+        <div className="card-body">{Math.floor((time / 100000) % 10)}</div>
       </div>
       <div className="card text-bg-dark mb-3">
-        <div className="card-body">{Math.floor(time / 10000 % 10)}</div>
+        <div className="card-body">{Math.floor((time / 10000) % 10)}</div>
       </div>
       <div className="card text-bg-dark mb-3">
-        <div className="card-body">{Math.floor(time / 1000 % 10)}</div>
+        <div className="card-body">{Math.floor((time / 1000) % 10)}</div>
       </div>
       <div className="card text-bg-dark mb-3">
-        <div className="card-body">{Math.floor(time / 100 % 10)}</div>
+        <div className="card-body">{Math.floor((time / 100) % 10)}</div>
       </div>
       <div className="card text-bg-dark mb-3">
-        <div className="card-body">{Math.floor(time / 10 % 10)}</div>
+        <div className="card-body">{Math.floor((time / 10) % 10)}</div>
       </div>
       <div className="card text-bg-dark mb-3">
-        <div className="card-body">{time / 1 % 10}</div>
+        <div className="card-body">{(time / 1) % 10}</div>
       </div>
     </div>
   );
-};
+}
