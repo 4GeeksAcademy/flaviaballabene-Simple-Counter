@@ -4,14 +4,32 @@ import { useState, useEffect } from "react";
 //create your first component
 export default function CountDown() {
   const [time, setTime] = useState(100000);
+  const [intervalId, setIntervalId] = useState(null);
 
   useEffect(() => {
     const intervalId = setInterval(
       () => setTime((prevTime) => prevTime - 1),
       1000
     );
+    setIntervalId(intervalId);
+
     return () => clearInterval(intervalId);
   }, []);
+
+  function resetClick() {
+    clearInterval(intervalId);
+    setTime(100000);
+    const id = setInterval(() => setTime((prevTime) => prevTime - 1), 1000);
+    setIntervalId(id);
+  }
+  function stopClick() {
+    clearInterval(intervalId);
+  }
+  function resumeClick() {
+    clearInterval(intervalId);
+    const id = setInterval(() => setTime((prevTime) => prevTime - 1), 1000);
+    setIntervalId(id);
+  }
 
   return (
     <div className="home">
@@ -48,6 +66,15 @@ export default function CountDown() {
       <div className="card text-bg-dark mb-3">
         <div className="card-body">{(time / 1) % 10}</div>
       </div>
+      <button className="button btn btn-light" onClick={resetClick}>
+        Reset
+      </button>
+      <button className="button btn btn-light" onClick={stopClick}>
+        Stop
+      </button>
+      <button className="button btn btn-light" onClick={resumeClick}>
+        Resume
+      </button>
     </div>
   );
 }
