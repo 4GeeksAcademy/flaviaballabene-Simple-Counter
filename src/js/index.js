@@ -10,5 +10,12 @@ import Home from "./component/home.jsx";
 import CountDown from "./component/countdown.jsx";
 
 //render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
-ReactDOM.render(<CountDown />, document.querySelector("#app2"));
+ReactDOM.render(<Home 
+reset={"Reset"}
+stop={"Stop"}
+resume={"Resume"}/>, document.querySelector("#app"));
+ReactDOM.render(<CountDown 
+reset={"Reset"}
+stop={"Stop"}
+resume={"Resume"}
+/>, document.querySelector("#app2"));

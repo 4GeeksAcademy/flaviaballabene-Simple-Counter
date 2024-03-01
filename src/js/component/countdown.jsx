@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-//create your first component
-export default function CountDown() {
+export default function CountDown(props) {
   const [time, setTime] = useState(100000);
   const [intervalId, setIntervalId] = useState(null);
 
@@ -67,13 +66,13 @@ export default function CountDown() {
         <div className="card-body">{(time / 1) % 10}</div>
       </div>
       <button className="button btn btn-light" onClick={resetClick}>
-        Reset
+        {props.reset}
       </button>
       <button className="button btn btn-light" onClick={stopClick}>
-        Stop
+        {props.stop}
       </button>
       <button className="button btn btn-light" onClick={resumeClick}>
-        Resume
+        {props.resume}
       </button>
     </div>
   );

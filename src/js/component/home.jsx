@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-//create your first component
-export default function Home() {
+export default function Home(props) {
   const [time, setTime] = useState(0);
   const [intervalId, setIntervalId] = useState(null);
 
@@ -66,14 +65,14 @@ export default function Home() {
       <div className="card text-bg-dark mb-3">
         <div className="card-body">{(time / 1) % 10}</div>
       </div>
-      <button className="button btn btn-light" onClick={resetClick}>
-        Reset
+       <button className="button btn btn-light" onClick={resetClick}>
+        {props.reset}
       </button>
       <button className="button btn btn-light" onClick={stopClick}>
-        Stop
+        {props.stop}
       </button>
       <button className="button btn btn-light" onClick={resumeClick}>
-        Resume
+        {props.resume}
       </button>
     </div>
   );
